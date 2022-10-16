@@ -28,5 +28,9 @@ ggplot(data = titanic, aes(x = Pclass, y = Age)) +
   geom_boxplot() +
   labs(x = "Passenger Class", y = "Age",  title = "Boxplot")
 ```
+```{r}
+# determine the percentage of males and females by class
+table1 (~ Sex|Pclass, data=titanic )
+```
 
 
