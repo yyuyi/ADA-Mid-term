@@ -1,0 +1,32 @@
+---
+title: "mid-term yuyi"
+author: "Yuyi Yang"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+# Using the titanic dataset located at "https://github.com/kijohnson/Data",  prepare an R markdown file that shows the code for a) importing the dataset, b) determining the median age for by passenger class, and c) a plot that shows medians, spread of data, and outliers for the continuous variable age according to passenger class. Report the medians by passenger class and upload a PDF or picture of your plot.
+```{r}
+# Install and library packages
+pacman::p_load(dplyr, readr,table1,ggplot2)
+```
+
+```{r}
+# a) importing the dataset
+titanic <- read_csv("https://raw.githubusercontent.com/kijohnson/Data/main/titanic.csv")
+```
+
+```{r}
+# b) determining the median age for by passenger class
+table1 (~ Age|Pclass, data=titanic )
+```
+```{r}
+# c) a plot that shows medians, spread of data, and outliers for the continuous variable age according to passenger class
+titanic$Pclass<- as.factor(titanic$Pclass)
+ggplot(data = titanic, aes(x = Pclass, y = Age)) +
+  geom_boxplot() +
+  labs(x = "Passenger Class", y = "Age",  title = "Boxplot")
+```
+
+
